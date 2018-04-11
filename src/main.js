@@ -30,7 +30,8 @@ const router = new VueRouter({
 })
 
 new Vue({
+	el: '#app',
 	router,
 	store,
-}).$mount('#app')
+})
 
