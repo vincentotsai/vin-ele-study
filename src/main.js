@@ -55,5 +55,5 @@ new Vue({
 //   components: {
 //     // <my-compo> 将只在父组件模板中可用
 //     'my-compo': Child
-  }
+//   }
 })
