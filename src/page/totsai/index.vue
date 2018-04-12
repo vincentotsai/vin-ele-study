@@ -2,8 +2,7 @@
   <div class="vin">
     <!-- <div v-if="name==1" v-for="name in names" :key="name" @click="fullName = 'Hello World'">{{name}}.{{firstName}},{{lastName}} -- {{fullName}}</div> -->
     <!-- <textarea v-model="message" placeholder="add multiple lines"></textarea> -->
-		<div style="position: fixed;bottom:30px;right:20px;background:red;color:white;border-radius:5px;border-shadow:2px 2px 2px gray;" @click="toHome">home</div>
-    
+    <div style="position: fixed;bottom:30px;right:20px;background:red;color:white;border-radius:5px;border-shadow:2px 2px 2px gray;" @click="toHome">home</div>
 
     <div id="example-5">
       <select v-model="selected" style="background:white;">
@@ -16,11 +15,12 @@
     </div>
 
     <vin-compo></vin-compo>
-    <!-- <my-compo></my-compo> -->
+    <child-compo :msg="selected" v-bind:todo="todo"></child-compo>
 
   </div>
 </template>
 <script>
+import childCompo from './child-compo'
 export default {
   data() {
     return {
@@ -30,7 +30,14 @@ export default {
       names: [1, 2, 3, 4],
       message: 'hello world young dreams',
       selected: 'b',
+      todo: {
+        text: 'Learn Vue',
+        isComplete: false
+      }
     }
+  },
+  components: {
+    childCompo
   },
   beforeCreate() {
     console.log('beforeCreate', this)
@@ -44,12 +51,12 @@ export default {
   mounted() {
     console.log('mounted el->', this.$el)
   },
-  
+
   watch: {},
   methods: {
     toHome() {
       this.$router.push({
-        path:'/'
+        path: '/'
       })
     }
   },
